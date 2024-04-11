@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+juco_fielding_data.csv
+juco_hit_data.csv
+juco_hit_ext_data.csv
+juco_pitch_data.csv
+region_id_tbl.csv
