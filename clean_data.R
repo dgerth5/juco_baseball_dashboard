@@ -32,7 +32,9 @@ clean_hit <- juco_hit_data %>%
                           adj_yr %in% sr ~ "SR",
                           adj_yr == "IF" ~ Yr,
                           adj_yr == "OF" ~ Yr)) %>%
-  mutate(across(.cols = 6:20, .fns = ~replace_na(as.numeric(.), 0)))
+  mutate(across(.cols = 6:20, .fns = ~replace_na(as.numeric(.), 0))) %>%
+  select(1,2,3,22,everything()) %>%
+  select(-c("Yr","adj_yr")) 
 
 # ext hit
 
@@ -49,7 +51,9 @@ clean_hit_ext <- juco_hit_ext_data %>%
                           adj_yr %in% sr ~ "SR",
                           adj_yr == "IF" ~ Yr,
                           adj_yr == "OF" ~ Yr)) %>%
-  mutate(across(.cols = 6:16, .fns = ~replace_na(as.numeric(.), 0)))
+  mutate(across(.cols = 6:16, .fns = ~replace_na(as.numeric(.), 0))) %>%
+  select(1,2,3,18,everything()) %>%
+  select(-c("Yr","adj_yr")) 
 
 # pitch data
 
@@ -63,12 +67,14 @@ clean_pitch <- juco_pitch_data %>%
          Year = case_when(adj_yr %in% fr ~ "FR",
                           adj_yr %in% rfr ~ "r-FR",
                           adj_yr %in% so ~ "SO",
-                          adj_yr %in% rso ~ "r-SO",
+                          adj_yr %in% rso ~ "r-SOx",
                           adj_yr %in% jr ~ "JR",
                           adj_yr %in% sr ~ "SR",
                           adj_yr == "IF" ~ Yr,
                           adj_yr == "OF" ~ Yr)) %>%
-  mutate(across(.cols = c(11,13:17,19,21), .fns = ~replace_na(as.numeric(.), 0)))
+  mutate(across(.cols = c(11,13:17,19,21), .fns = ~replace_na(as.numeric(.), 0))) %>%
+  select(1,2,3,23,everything()) %>%
+  select(-c("Yr","adj_yr")) 
 
 # field data
 
@@ -85,4 +91,15 @@ clean_field <- juco_fielding_data %>%
                           adj_yr %in% sr ~ "SR",
                           adj_yr == "IF" ~ Yr,
                           adj_yr == "OF" ~ Yr)) %>%
-  mutate(across(.cols = 12:17, .fns = ~replace_na(as.numeric(.), 0)))
+  mutate(across(.cols = 12:17, .fns = ~replace_na(as.numeric(.), 0))) %>%
+  select(1,2,3,19,everything()) %>%
+  select(-c("Yr","adj_yr")) 
+
+
+# final clean dataframes
+
+
+write_csv(clean_hit, "clean_hit.csv")
+write_csv(clean_hit_ext, "clean_hit_ext.csv")
+write_csv(clean_pitch, "clean_pitch.csv")
+write_csv(clean_field, "clean_field.csv")

@@ -76,7 +76,7 @@ for (i in 2:length(regions_df2$regions)){
 regions_df2$reg <- reg
 regions_df2$id <- paste0(regions_df2$div, "-", regions_df2$reg)
 
-
+write_csv(regions_df2, "region_id_tbl.csv")
 write_csv(hit_basic_df, "juco_hit_data.csv")
 write_csv(hit_ext_df, "juco_hit_ext_data.csv")
 write_csv(pitch_basic_df, "juco_pitch_data.csv")
