@@ -7,3 +7,7 @@ juco_hit_data.csv
 juco_hit_ext_data.csv
 juco_pitch_data.csv
 region_id_tbl.csv
+clean_field.csv
+clean_hit.csv
+clean_hit_ext.csv
+clean_pitch.csv
