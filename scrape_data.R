@@ -1,6 +1,7 @@
 library(rvest)
 library(xml2)
 library(tidyr)
+library(readr)
 
 # get list of teams, by division and region
 
@@ -21,7 +22,7 @@ hit_ext_df <- data.frame()
 pitch_basic_df <- data.frame()
 fielding_df <- data.frame()
 
-for (i in 1:length(link2)){
+for (i in 240:length(link2)){
   
   url <- link2[i]
   web <- read_html(url)
@@ -40,7 +41,7 @@ for (i in 1:length(link2)){
   fielding_df <- rbind(fielding_df, cbind(TeamName = team_name, as.data.frame(data[[9]])))
   
   print(team_name)
-  Sys.sleep(3) 
+  Sys.sleep(1) 
   
 }
 
@@ -76,4 +77,7 @@ regions_df2$reg <- reg
 regions_df2$id <- paste0(regions_df2$div, "-", regions_df2$reg)
 
 
-#write_csv(hit_basic_df, "juco_hit_data.csv")
+write_csv(hit_basic_df, "juco_hit_data.csv")
+write_csv(hit_ext_df, "juco_hit_ext_data.csv")
+write_csv(pitch_basic_df, "juco_pitch_data.csv")
+write_csv(fielding_df, "juco_fielding_data.csv")
