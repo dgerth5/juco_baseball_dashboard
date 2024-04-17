@@ -22,7 +22,7 @@ hit_ext_df <- data.frame()
 pitch_basic_df <- data.frame()
 fielding_df <- data.frame()
 
-for (i in 240:length(link2)){
+for (i in 1:length(link2)){
   
   url <- link2[i]
   web <- read_html(url)
@@ -44,6 +44,9 @@ for (i in 240:length(link2)){
   Sys.sleep(1) 
   
 }
+
+length(unique(hit_ext_df$TeamName))
+
 
 # clean this up at some point, but this is for normalizing stats by region later on
 
