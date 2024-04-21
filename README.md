@@ -1,4 +1,2 @@
 # juco_baseball_dashboard
-Code for JUCO Baseball Dashboard
-
-this is from rstudio
+Link to shiny app: https://david-gerth.shinyapps.io/juco_baseball_dashboard/
